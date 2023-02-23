@@ -22,10 +22,12 @@ def block_enable():
     r.raise_for_status()
 
     if r.status_code == 200:
-        return('Adblocking enabled')
+        jsn = {"is_active": "true"}
+        return(jsn)
 
     else:
-        return('Error: not possible to enable Adblocking')
+        jsn = {"Error": "Not possible to enable Adblocking"}
+        return(jsn)
 
 @app.route('/hook/block-disable', methods=['GET'])
 def block_disable():
@@ -35,10 +37,13 @@ def block_disable():
     r.raise_for_status()
 
     if r.status_code == 200:
-        return('Adblocking disabled')
+        jsn = {"is_active": "false"}
+        return(jsn)
 
     else:
-        return('Error: not possible to disable Adblocking')
+        jsn = {"Error": "Not possible to disable Adblocking"}
+        return(jsn)
+
 
 
 if __name__ == "__main__":
